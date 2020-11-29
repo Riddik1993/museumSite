@@ -1,0 +1,26 @@
+{% extends 'main/base.html' %}
+
+
+
+
+
+
+
+
+  {% block article %}
+
+      <div class="row main_space" >
+
+          <div class="col-md-12 col-lg-12 col-sm-12">
+            <h4>{{new.name}}</h4>
+
+            <img src="{{MEDIA_URL}}{{new.get_photo_url.image.url}}"  class="new_img"/>
+
+            {{new.description|linebreaks}}
+
+             </div>
+
+          </div>
+        </div>
+
+{% endblock %}

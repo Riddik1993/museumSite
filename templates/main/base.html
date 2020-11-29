@@ -1,0 +1,122 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <!-- BOOTSTRAP    -->
+      <link rel="stylesheet" href="{% static "bootstrap/css/bootstrap.min.css" %}"/>
+      <script type="text/javascript" src="{% static "bootstrap/js/bootstrap.bundle.min.js" %}"> </script>
+
+    <!-- MyStyles and Scripts    -->
+      <link rel="stylesheet" href="{% static "css/styles.css" %}" />
+      <script type="text/javascript" src="{% static "js\jquery-3.5.1.min.js" %}"> </script>
+      <script type="text/javascript" src="{% static "js\gen_menu.js" %}"> </script>
+
+
+  </head>
+  <body>
+
+    <div class="container-xxl main_bg">
+
+      <nav class="navbar navbar-expand-lg navbar-light" >
+          <div class="container-fluid">
+              <a class="navbar-brand mr-4" href="#">
+                <img src="{% static 'icons/logo.png' %}"  width="50" class="d-inline-block align-top"/>
+              </a>
+
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+                    <li class="nav-item">
+                      <a class="nav-link active"  aria-current="page" href="{% url 'main'  %}">Главная</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                          <span id="menu_gen">Экспозиции</span>
+                        </a>
+                        <ul class="dropdown-menu"  aria-labelledby="navbarDropdown">
+                          {% if exp %}
+                              {% for ex in exp %}
+                                <li ><a class="dropdown-item" href="{% url 'exh' ex.id %}">{{ex.name}}</a></li>
+
+                                {% endfor %}
+
+                          {% else %}
+                                <li ><a class="dropdown-item" href="#">-----</a></li>
+                          {% endif %}
+                          </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+                          Направления развития
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                          {% if newstypes %}
+                              {% for t in newstypes %}
+                                <li ><a class="dropdown-item" href="{% url 'directions' t.id %}">{{t.name}}</a></li>
+
+                                {% endfor %}
+
+                          {% else %}
+                                <li ><a class="dropdown-item" href="#">-----</a></li>
+                          {% endif %}
+                        </ul>
+                    </li>
+
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'administration' %}">Администрация</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'contact' %}">Контакты</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link" href="{% url 'fb' %}">Отзывы</a>
+                    </li>
+
+
+                </ul>
+
+            <form class="d-flex" method="GET" action="{% url 'search' %}">
+              <input class="form-control mr-2" type="search" placeholder="поиск на сайте" aria-label="Search" name="q">
+              <button class="btn btn_search"  type="submit">Поиск</button>
+           </form>
+         </div>
+      </div>
+    </nav>
+
+
+    {% block article %}
+
+   {% endblock %}
+
+
+
+
+        <div class="row" style="border-top:1px solid black;">
+          <div class="col-10">
+            Сайт школьного музея школы №26 г. Ярославль
+          </div>
+          <div class="col-2">
+            Made by #Riddik_web
+          </div>
+
+
+        </div>
+
+    </div>
+
+
+
+  </body>
+</html>

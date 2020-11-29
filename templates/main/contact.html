@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %}
+
+
+
+
+
+
+
+
+  {% block article %}
+
+      <div class="row main_space" >
+
+          <div class="col-md-6 col-lg-6 col-sm-12">
+
+            <h4>Контакты</h4>
+            <br/>
+            {% if contacts %}
+              {% for c in contacts %}
+                <div >
+                    <h5>{{c.name}}</h5>
+                    <div style="line-height: 0.5em !important;">
+                        <p>Телефон: {{c.telephone}}</p>
+                        <p>Email: {{c.email}}</p>
+                        <i>{{c.description}}</i>
+                    </div>
+                </div>
+                <br/>
+              {% endfor %}
+            {% endif %}
+
+
+             </div>
+
+          </div>
+        </div>
+
+{% endblock %}

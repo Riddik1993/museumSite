@@ -1,0 +1,132 @@
+{% extends 'main/base.html' %}
+{% load embed_video_tags %}
+{% load static %}
+
+
+
+
+
+
+
+
+  {% block article %}
+
+    <script type="text/javascript" src="{% static "js\ajax_new.js" %}">  </script>
+
+
+      <div class="row main_space" >
+
+          <div class="col-md-12 col-lg-12 col-sm-12">
+            <h4>{{dir.name}}</h4>
+            <i>{{dir.description}}</i>
+            <br/>
+            <br/>
+
+            <div class="modal fade" tabindex="-1" id='new_modal' data-backdrop="static">
+
+            <div class="modal-dialog modal-xl">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close close_exh" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+
+                <div class="modal-body">
+                  <div class="container_fluid">
+                    <div class="row">
+                          <div class="col-md-6 col-lg-6 col-sm-12">
+                              <div style="min-height:300px;">
+                                <img  src="" class="modal_img1" />
+                               </div>
+                               <button class="btn btn_search" id="prev_photo"><<</button>
+                               <button class="btn btn_search" id="next_photo">>></button>
+                                <br/>
+                                <br/>
+
+                               <iframe width="100%" height="300"> src="">
+                               </iframe>
+                          </div>
+
+                          <div class="exponate_text col-md-6 col-lg-6 col-sm-12"  >
+                          </div>
+
+                          <div class="col-md-12 col-lg-12 col-sm-12">
+
+
+                          </div>
+
+
+                    </div>
+
+
+
+                  </div>
+
+
+
+                </div>
+
+              </div>
+            </div>
+            </div>
+
+            {% for n in news %}
+
+                          <div class="card card-dir mb-4 modal_launch" id={{n.id}} >
+                                <div class="row g-0">
+                                  <div class="col-md-4">
+                                    <img src="{{n.get_photo_url.image.url}}">
+
+                                  </div>
+                                  <div class="col-md-8">
+                                    <div class="card-body" >
+                                      <h5 class="card-title">{{n.name}}</h5>
+                                      <p class="card-text">{{n.short_description}}</p>
+                                      <p class="card-text"><small class="text-muted">{{n.pub_date}}</small></p>
+                                    </div>
+                                  </div>
+                                </div>
+                          </div>
+
+
+
+            {% endfor %}
+            {% if news %}
+                 <nav aria-label="Page navigation example">
+                       <ul class="pagination">
+                         <li class="page-item">
+                           {% if news.has_previous %}
+                               <a class="page-link" href="?page={{news.previous_page_number}}" aria-label="Previous">
+                           {% else %}
+                               <a class="page-link" href="#" aria-label="Previous">
+                           {% endif %}
+                             <span aria-hidden="true">&laquo;</span>
+                           </a>
+                         </li>
+
+                         <li class="page-item page-link ">стр. {{news.number}} из {{news.paginator.num_pages}}</li>
+
+                         <li class="page-item">
+                         {% if news.has_next %}
+                           <a class="page-link" href="?page={{news.next_page_number}}" aria-label="Next">
+                         {% else %}
+                           <a class="page-link" href="#" aria-label="Next">
+                         {% endif %}
+                             <span aria-hidden="true">&raquo;</span>
+                           </a>
+                         </li>
+                       </ul>
+                  </nav>
+           {% endif %}
+
+
+          </div>
+        </div>
+
+
+
+
+
+{% endblock %}

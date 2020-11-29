@@ -1,0 +1,70 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block article %}
+
+    <script type="text/javascript"  %}" >
+        $(document).ready(function() {
+              $('.card_adm').click(function ()  {
+                id=$(this).attr('id');
+                        $.get( '{% url 'Biochanger' %}',{id:id}, function( bio_text ) {
+                                                                          $('#empinfo').css("display","none")
+
+                                                                          $('#empinfo').text(bio_text);
+                                                                          $('#empinfo').fadeIn(1200)
+
+                                                                                  }
+                             );
+
+
+
+
+              });
+
+      }) ;
+
+
+     </script>
+
+
+    <h3 class="page-header">Администрация музея</h3>
+
+      <div class="row main_space" >
+         <div class="col-md-7 col-lg-7 col-sm-12">
+           <div class="row " >
+                {% for a in admins %}
+                   <div class="col-md-4 col-lg-4 col-sm-4">
+                      <div class="card_adm" id={{a.id}}>
+                        {% if a.photo %}
+                            <img src="{{a.photo.url}}" class="card-img-top" alt="...">
+                        {% else %}
+                            <img src="{% static "icons/emptyprofile.jpg" %}" class="card-img-top" alt="...">
+                        {% endif %}
+
+                        <div class="card-body card-body-adm">
+                          <b>{{a.user.last_name}}&nbsp{{a.user.first_name}}</b><br/>
+                           {{a.position}}
+                        </div>
+                      </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+         </div>
+            <div class="col-md-5 col-lg-5 col-sm-12 empl_info " >
+               <div class="internal_emp">
+                  <h5 >О сотруднике:</h5>
+                   <i>
+                  <div id="empinfo" >
+
+                    Чтобы узнать больше о сотруднике, выберите его профиль
+                  </div>
+                  </i>
+                </div>
+               </div>
+
+
+
+       </div>
+
+{% endblock %}

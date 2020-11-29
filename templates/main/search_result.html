@@ -1,0 +1,66 @@
+{% extends 'main/base.html' %}
+
+
+
+
+
+
+
+
+  {% block article %}
+
+      <div class="row main_space" >
+
+          <div class="col-md-7 col-lg-7 col-sm-12">
+              <h4>Результаты поиска:</h4>
+                      {% if object_list %}
+                              {% for object in object_list %}
+                                  <div>
+                                      <a href="{{ object.get_absolute_url }}">
+                                          <h6>{{ object.name }}</h6>
+                                      </a>
+                                      {{ object.description|safe|truncatewords:45 }}
+                                      <p><a class="btn btn-default btn-sm" href="{{ object.get_absolute_url }}">Читать далее</a></p>
+                                  </div>
+                              {% endfor %}
+
+                              <nav aria-label="Page navigation example">
+                                    <ul class="pagination">
+                                      <li class="page-item">
+                                        {% if object_list.has_previous %}
+                                            <a class="page-link" href="?page={{object_list.previous_page_number}}&{{last_question}}" aria-label="Previous">
+                                        {% else %}
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                        {% endif %}
+                                          <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                      </li>
+
+                                      <li class="page-item page-link ">стр. {{object_list.number}} из {{object_list.paginator.num_pages}}</li>
+
+                                      <li class="page-item">
+                                      {% if object_list.has_next %}
+                                        <a class="page-link" href="?page={{object_list.next_page_number}}&{{last_question}}" aria-label="Next">
+                                      {% else %}
+                                        <a class="page-link" href="#" aria-label="Next">
+                                      {% endif %}
+                                          <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                      </li>
+                                    </ul>
+                               </nav>
+
+                      {% else %}
+                              <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+                      {% endif %}
+
+
+
+
+
+           </div>
+
+      </div>
+
+
+{% endblock %}
