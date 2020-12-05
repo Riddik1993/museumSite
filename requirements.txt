@@ -21,3 +21,5 @@ virtualenv==20.1.0
 Werkzeug==1.0.1
 django-cleanup
 gunicorn==20.0.4
+psycopg2==2.8.4
+psycopg2-binary==2.8.4
