@@ -80,6 +80,7 @@ class ContentPhoto(models.Model):
     image=models.ImageField(upload_to=f'images/{subject.verbose_name}',verbose_name='Фотография')
     main_photo=models.CharField('Главное фото?',max_length=3,choices=agree_choices,default='N')
 
+
     class Meta:
         abstract = True
         verbose_name='Фото'
@@ -150,6 +151,8 @@ class New(ContentObject):
 class PhotoNew(ContentPhoto):
     subject=models.ForeignKey('New',null=True,on_delete=models.CASCADE,
                                 verbose_name='new_photo',related_name='images')
+    image=models.ImageField(upload_to='images/new_photo',verbose_name='Фотография')
+
     class Meta:
         verbose_name='Фото для новости'
         verbose_name_plural='Фото для новости'
