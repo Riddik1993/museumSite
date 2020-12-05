@@ -5,3 +5,5 @@ db.sqlite3
 **/media/**
 *.json
 *.sqlite3
+*.yml
+DockerFile
