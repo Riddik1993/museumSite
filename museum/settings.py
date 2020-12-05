@@ -27,7 +27,7 @@ SECRET_KEY = '^*1n++vk5ka_q+#5m)blu@jfi!qe%2x5rq+%w&dhrz+$@(i+t@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 # Application definition
@@ -39,14 +39,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'debug_toolbar',
     'main',
     'captcha',
-    'django_extensions',
     'embed_video',
-
+    'django_cleanup.apps.CleanupConfig',
 
 ]
+
 
 
 MIDDLEWARE = [
@@ -153,3 +152,4 @@ INTERNAL_IPS = ('127.0.0.1',)
 if DEBUG:
     import mimetypes
     mimetypes.add_type("application/javascript", ".js", True)
+    INSTALLED_APPS.append('debug_toolbar')
