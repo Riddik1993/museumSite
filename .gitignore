@@ -3,6 +3,7 @@ db.sqlite3
 **/__pycache__/**
 **/migrations/**
 **/media/**
+**/static/admin/**
 *.json
 *.sqlite3
 *.yml
