@@ -46,8 +46,9 @@ def ShowExhibition(request,ex_id):
 @cache_page(30)
 def ShowExhibit(request,exh_id):
     exp=Exhibition.objects.all().only('name','description')
-    subj=Exhibit.objects.only('name','description','image').get(id=exh_id)
-    return render(request, "main/exhibit.html",{'subj':subj,'exp':exp})
+    subj=Exhibit.objects.only('name','description').get(id=exh_id)
+    photo=PhotoExhibit.objects.get(subject=subj,main_photo="Y")
+    return render(request, "main/exhibit.html",{'subj':subj,'exp':exp,'photo':photo})
 
 def ShowSuccessFeedback(request):
     context=get_menu()
