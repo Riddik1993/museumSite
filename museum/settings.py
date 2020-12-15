@@ -57,9 +57,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    
 
 ]
+
 
 ROOT_URLCONF = 'museum.urls'
 
@@ -161,3 +162,4 @@ if DEBUG:
     import mimetypes
     mimetypes.add_type("application/javascript", ".js", True)
     INSTALLED_APPS.append('debug_toolbar')
+    MIDDLEWARE.append('debug_toolbar.middleware.DebugToolbarMiddleware')
