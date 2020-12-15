@@ -13,7 +13,7 @@
       <link rel="stylesheet" href="{% static "css/styles.css" %}" />
       <script type="text/javascript" src="{% static "js\jquery-3.5.1.min.js" %}"> </script>
       <script type="text/javascript" src="{% static "js\gen_menu.js" %}"> </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   </head>
   <body>
@@ -22,7 +22,7 @@
 
       <nav class="navbar navbar-expand-lg navbar-light" >
           <div class="container-fluid">
-              <a class="navbar-brand mr-4" href="#">
+              <a class="navbar-brand mr-4" href="{% url 'main' %}">
                 <img src="{% static 'icons/logo.png' %}"  width="50" class="d-inline-block align-top"/>
               </a>
 
@@ -104,10 +104,10 @@
 
 
         <div class="row" style="border-top:1px solid black;">
-          <div class="col-10">
-            Сайт школьного музея школы №26 г. Ярославль
+          <div class="col-md-10 col-lg-10 col-sm-1">
+            Сайт музея школы №26 г.Ярославль
           </div>
-          <div class="col-2">
+          <div class="col-md-2 col-lg-2 col-sm-1">
             Made by #Riddik_web
           </div>
 
