@@ -1,6 +1,6 @@
 
   $(document).ready(function(){
-
+    
       //работа со всплывающим окном
           //открыть и получить текст о событии
       var myModal = new bootstrap.Modal(document.getElementById('new_modal'));
@@ -13,7 +13,17 @@
                                                                                         $('.exponate_text').html(data['desc']);
                                                                                         ArrayPhoto=$(data['photo_urls']);
                                                                                         photo_num=0;
-                                                                                        $('.modal-body').find('iframe').attr('src',data['video']);
+                                                                                        chk_video=data['video'];
+                                                                                        console.log(chk_video);
+                                                                                        if (chk_video=="") {
+                                                                                           $('.modal-body').find('iframe').attr('height',0);
+                                                                                            $('#show_w').html("");
+                                                                                         }
+                                                                                         else {
+                                                                                                $('#show_w').html("<p><b>Посмотрите видео по данному событию:</b></p>");
+                                                                                                $('.modal-body').find('iframe').attr('height',300);
+                                                                                                $('.modal-body').find('iframe').attr('src',data['video']);
+                                                                                              };
                                                                                         $('.modal-body').find('img').attr('src',media_url+ArrayPhoto[0]);
 
                                                                                         });
