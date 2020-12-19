@@ -319,4 +319,9 @@ iframe {
   margin-top:10px;
 }
 
+.exh_desc 
+{
+max-height:350px;
+overflow: auto;
+
 }
