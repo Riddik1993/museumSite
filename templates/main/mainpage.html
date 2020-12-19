@@ -26,12 +26,12 @@
                           <div href="" id="{{n.id}}" class="list-group-item list-group-item-action"  aria-current="true">
                                 <div class="d-flex w-100 " >
                                  <div class="row">
-                                        <div class="col-md-11 col-lg-11 col-sm-11" >
+                                        <div class="col-11" >
                                           <b>{{n.name}}</b>
                                             <p>{{n.short_description}}</p>
 
                                         </div>
-                                        <div class="col-md-1 col-lg-1 col-sm-1">
+                                        <div class="col-1" > 
                                           {% if n.hot_new == "Y" %}
                                             <img src="{% static 'icons/firegif1.gif' %}"  class="hot_new"   alt="new!"/>
                                           {% endif %}
